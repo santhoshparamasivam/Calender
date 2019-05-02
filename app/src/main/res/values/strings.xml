@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Calender</string>
+
+
+    <string name="interstitial_full_screen">ca-app-pub-3643602219143275/4695888099</string>
+    <string name="rewarded">ca-app-pub-3643602219143275/5051111313</string>
+    <string name="admob_app_id">ca-app-pub-3643602219143275~4684936349</string>
+    <string name="banner_home_footer">ca-app-pub-3643602219143275/1906073226</string>
+    <string name="rewarded_video">ca-app-pub-3643602219143275/5051111313</string>
+    />
+
+</resources>
