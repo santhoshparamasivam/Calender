@@ -58,11 +58,14 @@ LinearLayout lv1;
         mPublisherInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
+                Log.e("mPublisherInterstitial","load");
                 // Code to be executed when an ad finishes loading.
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
+                Log.e("mPublisherInterstitial",errorCode+"");
+
                 // Code to be executed when an ad request fails.
             }
 
@@ -94,7 +97,7 @@ LinearLayout lv1;
         mAdView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-
+                Log.e("mAdView ad","load");
             }
 
             @Override
@@ -141,10 +144,12 @@ LinearLayout lv1;
             @Override
             public void onAdLoaded() {
 
+                Log.e("publisher ad","load");
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
+                Log.e("publisher",errorCode+"");
                 // Code to be executed when an ad request fails.
             }
 
@@ -199,12 +204,13 @@ LinearLayout lv1;
         mPublisherInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-
+Log.e("publisher ad","load");
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 // Code to be executed when an ad request fails.
+                Log.e("publisher ad","load");
                 Log.e("errorCode",errorCode+"");
             }
 
@@ -242,6 +248,8 @@ LinearLayout lv1;
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
+                Log.e("mPublisherAdView ad","load");
+                Log.e("mPublisherAdView",errorCode+"");
                 // Code to be executed when an ad request fails.
             }
 
