@@ -29,6 +29,9 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
+import com.google.android.gms.ads.doubleclick.PublisherAdView;
+import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnFullscreenAd, btnShowRewardedVideoAd;
     private int mDay;
     private int mMonth;
+    private PublisherInterstitialAd mPublisherInterstitialAd;
     private int mYear;
     private String sMonth;
     private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener(){
@@ -84,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
      getWindow().requestFeature(2);
         setContentView(R.layout.activity_main);
-//        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = (AdView) findViewById(R.id.adView);
         wv1 = (WebView) findViewById(R.id.webview);
         DisplayMetrics displayMetrics = new DisplayMetrics();
        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -178,7 +182,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Thread","Working");
                 Intersitial();
                 Admethoad();
-
+                mAdView.setAdSize(AdSize.BANNER);
+                AdRequest adRequest1 = new AdRequest.Builder().build();
+                mAdView.loadAd(adRequest1);
                 handler.postDelayed(this, 3000);
             }
         };
@@ -186,8 +192,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Admethoad() {
+        mPublisherInterstitialAd = new PublisherInterstitialAd(this);
+        mPublisherInterstitialAd.setAdUnitId("ca-app-pub-3643602219143275/4695888099");
+        mPublisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
+        mPublisherInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                Log.e("mPublisherInterstitial","load");
+                // Code to be executed when an ad finishes loading.
+            }
 
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.e("mPublisherInterstitial",errorCode+"");
 
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when the ad is displayed.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the interstitial ad is closed.
+            }
+        });
             Log.e("Admethoad","Working");
             AdRequest adRequest = new AdRequest.Builder()
                     .build();
