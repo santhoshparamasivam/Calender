@@ -24,8 +24,8 @@ public class SplashScreen extends AppCompatActivity {
 Button b1;
     InterstitialAd mInterstitialAd;
     private AdView mAdView;
-//    private PublisherAdView mPublisherAdView;
-//    private PublisherInterstitialAd mPublisherInterstitialAd;
+    private PublisherAdView mPublisherAdView;
+    private PublisherInterstitialAd mPublisherInterstitialAd;
 LinearLayout lv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +33,15 @@ LinearLayout lv1;
         setContentView(R.layout.activity_splash_screen);
         mAdView = (AdView) findViewById(R.id.adView);
         lv1=(LinearLayout)findViewById(R.id.lv1);
-//        mPublisherAdView = findViewById(R.id.publisherAdView);
+        mPublisherAdView = findViewById(R.id.publisherAdView);
         MobileAds.initialize(this, ("ca-app-pub-3643602219143275~4684936349"));
-//        mPublisherInterstitialAd = new PublisherInterstitialAd(this);
+        mPublisherInterstitialAd = new PublisherInterstitialAd(this);
         mAdView = new AdView(this);
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(("ca-app-pub-3643602219143275/4695888099"));
-//        mPublisherInterstitialAd.setAdUnitId("ca-app-pub-3643602219143275/4695888099");
+        mPublisherInterstitialAd.setAdUnitId("ca-app-pub-3643602219143275/4695888099");
         mAdView.setAdUnitId("ca-app-pub-3643602219143275/1906073226");
-//        mAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        mAdView.setAdSize(AdSize.BANNER);
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
@@ -91,9 +91,8 @@ LinearLayout lv1;
             }
         });
 
-//        PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
-//        mPublisherAdView.loadAd(adRequest);
-        mAdView.setAdSize(AdSize.BANNER);
+        PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
+        mPublisherAdView.loadAd(adRequest);
         AdRequest adRequest1 = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest1);
         mAdView.setAdListener(new AdListener() {
@@ -142,41 +141,41 @@ LinearLayout lv1;
 
 
 
-//        mPublisherAdView.setAdListener(new AdListener() {
-//            @Override
-//            public void onAdLoaded() {
-//
-//                Log.e("publisher ad","load");
-//            }
-//
-//            @Override
-//            public void onAdFailedToLoad(int errorCode) {
-//                Log.e("publisher",errorCode+"");
-//                // Code to be executed when an ad request fails.
-//            }
-//
-//            @Override
-//            public void onAdOpened() {
-//                // Code to be executed when an ad opens an overlay that
-//                // covers the screen.
-//            }
-//
-//            @Override
-//            public void onAdClicked() {
-//                // Code to be executed when the user clicks on an ad.
-//            }
-//
-//            @Override
-//            public void onAdLeftApplication() {
-//                // Code to be executed when the user has left the app.
-//            }
-//
-//            @Override
-//            public void onAdClosed() {
-//                // Code to be executed when the user is about to return
-//                // to the app after tapping on an ad.
-//            }
-//        });
+        mPublisherAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+
+                Log.e("publisher ad","load");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.e("publisher",errorCode+"");
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
 //        b1 = (Button) findViewById(R.id.b1);
 //
 //        mInterstitialAd = new InterstitialAd(this);
@@ -200,85 +199,85 @@ LinearLayout lv1;
     }
 
     private void Adsmethod() {
-        mAdView.setAdSize(AdSize.BANNER);
+
         AdRequest adRequest1 = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest1);
         Intersitial();
-//        mPublisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
-//        mPublisherInterstitialAd.setAdListener(new AdListener() {
-//            @Override
-//            public void onAdLoaded() {
-//Log.e("publisher ad","load");
-//            }
-//
-//            @Override
-//            public void onAdFailedToLoad(int errorCode) {
-//                // Code to be executed when an ad request fails.
-//                Log.e("publisher ad","load");
-//                Log.e("errorCode",errorCode+"");
-//            }
-//
-//            @Override
-//            public void onAdOpened() {
-//                // Code to be executed when the ad is displayed.
-//            }
-//
-//            @Override
-//            public void onAdClicked() {
-//                // Code to be executed when the user clicks on an ad.
-//            }
-//
-//            @Override
-//            public void onAdLeftApplication() {
-//                // Code to be executed when the user has left the app.
-//            }
-//
-//            @Override
-//            public void onAdClosed() {
-//                // Code to be executed when the interstitial ad is closed.
-//            }
-//        });
-//        PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
-//        mPublisherAdView.loadAd(adRequest);
+        mPublisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
+        mPublisherInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+Log.e("publisher ad","load");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+                Log.e("publisher ad","load");
+                Log.e("errorCode",errorCode+"");
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when the ad is displayed.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the interstitial ad is closed.
+            }
+        });
+        PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
+        mPublisherAdView.loadAd(adRequest);
 
 //        mPublisherAdView.setAdSizes(AdSize.BANNER);
-//
-//        mPublisherAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-//        mPublisherAdView.setAdListener(new AdListener() {
-//            @Override
-//            public void onAdLoaded() {
-//                // Code to be executed when an ad finishes loading.
-//            }
-//
-//            @Override
-//            public void onAdFailedToLoad(int errorCode) {
-//                Log.e("mPublisherAdView ad","load");
-//                Log.e("mPublisherAdView",errorCode+"");
-//                // Code to be executed when an ad request fails.
-//            }
-//
-//            @Override
-//            public void onAdOpened() {
-//                // Code to be executed when an ad opens an overlay that
-//                // covers the screen.
-//            }
-//
-//            @Override
-//            public void onAdClicked() {
-//                // Code to be executed when the user clicks on an ad.
-//            }
-//
-//            @Override
-//            public void onAdLeftApplication() {
-//                // Code to be executed when the user has left the app.
-//            }
-//
-//            @Override
-//            public void onAdClosed() {
-//                // Code to be executed when the user is about to return
-//                // to the app after tapping on an ad.
-//            }
-//        });
+
+
+        mPublisherAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.e("mPublisherAdView ad","load");
+                Log.e("mPublisherAdView",errorCode+"");
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
 
     }
 
@@ -288,34 +287,34 @@ LinearLayout lv1;
             Log.e("Admethoad","Working");
             AdRequest adRequest = new AdRequest.Builder()
                     .build();
-//            mAdView.setAdListener(new AdListener() {
-//                @Override
-//                public void onAdLoaded() {
-//                    Toast.makeText(SplashScreen.this, "Ad Show Success ", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onAdClosed() {
-//                    Toast.makeText(getApplicationContext(), "Ad is closed!", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onAdFailedToLoad(int errorCode) {
-//                    Toast.makeText(getApplicationContext(), "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onAdLeftApplication() {
-//                    Toast.makeText(getApplicationContext(), "Ad left application!", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onAdOpened() {
-//                    super.onAdOpened();
-//                }
-//            });
-//
-//            mAdView.loadAd(adRequest);
+            mAdView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    Toast.makeText(SplashScreen.this, "Ad Show Success ", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAdClosed() {
+                    Toast.makeText(getApplicationContext(), "Ad is closed!", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAdFailedToLoad(int errorCode) {
+                    Toast.makeText(getApplicationContext(), "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAdLeftApplication() {
+                    Toast.makeText(getApplicationContext(), "Ad left application!", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAdOpened() {
+                    super.onAdOpened();
+                }
+            });
+
+            mAdView.loadAd(adRequest);
 
 
 

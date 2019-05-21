@@ -101,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this,("ca-app-pub-3643602219143275~4684936349"));
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(("ca-app-pub-3643602219143275/4695888099"));
-
+        mAdView = new AdView(this);
+        mAdView.setAdUnitId("ca-app-pub-3643602219143275/1906073226");
+        mAdView.setAdSize(AdSize.BANNER);
         newads();
 
 
@@ -182,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Thread","Working");
                 Intersitial();
                 Admethoad();
-                mAdView.setAdSize(AdSize.BANNER);
+
                 AdRequest adRequest1 = new AdRequest.Builder().build();
                 mAdView.loadAd(adRequest1);
                 handler.postDelayed(this, 3000);
